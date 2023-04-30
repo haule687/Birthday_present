@@ -1,0 +1,172 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <canvas id="canvas"></canvas>
+    <!--PRESENT BOX-->
+    <div class="gift-box-container">
+      <div class="gift-box" id="gift">
+
+        <div class="ribbon-l" style="--gift-box-position: 0px; border-color: darkred"></div>
+        <div class="ribbon-l" style="--gift-box-position: 1px; border-color: darkred"></div>
+        <div class="ribbon-l" style="--gift-box-position: 2px; border-color: darkred"></div>
+        <div class="ribbon-l" style="--gift-box-position: 3px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 4px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 5px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 6px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 7px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 8px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 9px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 10px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 11px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 12px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 13px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 14px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 15px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 16px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 17px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 18px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 19px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 20px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 21px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 22px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 23px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 24px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 25px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 26px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 27px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 28px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 29px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 30px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 31px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 32px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 33px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 34px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 35px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 36px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 37px; border-color: white"></div>
+        <div class="ribbon-l" style="--gift-box-position: 38px; border-color: darkred"></div>
+        <div class="ribbon-l" style="--gift-box-position: 39px; border-color: darkred"></div>
+        <div class="ribbon-l" style="--gift-box-position: 40px; border-color: darkred"></div>
+        <div class="ribbon-l-end"></div>
+        <div class="ribbon-r" style="--gift-box-position: 0px; border-color: darkred"></div>
+        <div class="ribbon-r" style="--gift-box-position: 1px; border-color: darkred"></div>
+        <div class="ribbon-r" style="--gift-box-position: 2px; border-color: darkred"></div>
+        <div class="ribbon-r" style="--gift-box-position: 3px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 4px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 5px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 6px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 7px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 8px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 9px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 10px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 11px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 12px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 13px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 14px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 15px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 16px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 17px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 18px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 19px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 20px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 21px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 22px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 23px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 24px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 25px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 26px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 27px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 28px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 29px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 30px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 31px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 32px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 33px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 34px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 35px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 36px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 37px; border-color: white"></div>
+        <div class="ribbon-r" style="--gift-box-position: 38px; border-color: darkred"></div>
+        <div class="ribbon-r" style="--gift-box-position: 39px; border-color: darkred"></div>
+        <div class="ribbon-r" style="--gift-box-position: 40px; border-color: darkred"></div>
+        <div class="ribbon-r-end"></div>
+
+        <div class="gift">
+          <div class="img-wrap" id="gift-image">
+            
+          </div>
+        </div>
+        <div class="gift-box__side gift-box__side--front"></div>
+        <div class="gift-box__side gift-box__side--back"></div>
+        <div class="gift-box__side gift-box__side--left"></div>
+        <div class="gift-box__side gift-box__side--right"></div>
+        <div class="gift-box__end gift-box__side--bottom"></div>
+        
+        <div class="gift-box-lid__side gift-box-lid__side--front"></div>
+        <div class="gift-box-lid__side gift-box-lid__side--back"></div>
+        <div class="gift-box-lid__side gift-box-lid__side--left"></div>
+        <div class="gift-box-lid__side gift-box-lid__side--right"></div>
+        <div class="gift-box-lid__end gift-box-lid__side--top"></div>
+      </div>
+      <p class="info-text">Click to Open</p>
+    </div>
+    <!--------------------------------Card --------------------------------->
+    <div id="birthdayCard" class="birthdayCard-hidden">
+      <div class="cardFront">
+        <div class="front-text">
+        <h3 class="happy">HAPPY</h3>
+        <h2 class="bday">BIRTHDAY</h2> 
+        <h3 class="toyou">to you!</h3>  
+        </div>
+        <div class="wrap-deco">
+      <div class="decorations"></div>
+      <div class="decorationsTwo"></div>
+        </div> 
+          <div class="wrap-decoTwo">
+      <div class="decorations"></div>
+      <div class="decorationsThree"></div>
+        </div>
+        <div class="plate">
+          <div class="cake"></div>
+          <div class="flame"></div>
+        </div>
+      </div>
+        
+        <div class="cardInside">
+           <div class="inside-text">
+        <h3 class="happy">HAPPY</h3>
+        <h2 class="bday">BIRTHDAY</h2> 
+        <h3 class="toyou">to you!</h3>  
+        </div>
+          <div class="wishes">
+          <p>Happy birthday!! I hope your day is filled with lots of love and laughter! May all of your birthday wishes come true.</p>
+          <p class="name">xxx</p>
+          </div>
+        </div>
+    </div>
+    <!--------------------------------Cake---------------------------------->
+    <div class="cake2">
+      <div class="plate2"></div>
+      <div class="layer layer-bottom"></div>
+      <div class="layer layer-middle"></div>
+      <div class="layer layer-top"></div>
+      <div class="icing"></div>
+      <div class="drip drip1"></div>
+      <div class="drip drip2"></div>
+      <div class="drip drip3"></div>
+      <div class="candle">
+          <div class="flame2"></div>
+      </div>
+  </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

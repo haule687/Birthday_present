@@ -1,0 +1,757 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  padding: 0;
+  background: black;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  height: 100vh;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.container{
+  position: relative;
+}
+/*------------------------Start Box --------------------------*/
+
+.gift-box-container {
+  width: 200px;
+  height: 200px;
+  perspective: 400px;
+  padding: 0;
+  margin: 0;
+  perspective-origin: 50% 200px;
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.gift-box-container .info-text {
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-family: "Avenir";
+  font-weight: 100;
+  font-size: 13px;
+  height: 25px;
+  align-self: flex-end;
+  transform: translate(0, 60px);
+  display: block;
+}
+
+
+.gift-box {
+  --gift-box-color: #e63946;
+  --gift-box-edge-color: #590b11;
+  --wrap-color: #f1faee;
+  --wrap-ribbon-color: #c0e4e6;
+  --wrap-top-color: #d8efef;
+
+  width: 200px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  animation: rotation-3d 20s infinite linear;
+}
+
+/*----------------gif-box hover---------------------*/
+.gift-box:hover {
+  -webkit-animation: staticFront 700ms ease forwards;
+          animation: staticFront 700ms ease forwards;
+}
+
+@-webkit-keyframes staticFront {
+  100% {
+    transform: rotateX(-100deg) rotateY(-180deg);
+  }
+}
+@keyframes staticFront {
+  100% {
+    transform: rotateX(0deg) rotateY(90deg);
+  }
+}
+/*--------------------------------------------------*/
+/*-------------------gift------------------------*/
+.gift-box .gift {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  z-index: 50;
+  transform: rotateY(-180deg) rotateX(180deg) translateZ(-100px);
+  display: flex;
+  perspective: 600px;
+  pointer-events: none;
+  visibility: hidden;
+}
+.gift-box .gift > .img-wrap {
+  width: 200px;
+  align-self: center;
+  transition: transform 400ms;
+  opacity: 0;
+  transform: translateZ(-80px);
+}
+.gift-box .gift > .img-wrap a {
+  transition: transform 300ms;
+  position: relative;
+  display: block;
+  transform: scale(0.94);
+}
+.gift-box .gift > .img-wrap a:hover {
+  transform: scale(1);
+}
+.gift-box .gift > .img-wrap img {
+  max-width: 100%;
+  height: auto;
+}
+/*-----------------gift-box open---------------------------*/
+.gift-box.open {
+  /*&>.side.top{
+      opacity: .2;
+  }*/
+  -webkit-animation: zoomIn 1s ease-in forwards;
+          animation: zoomIn 1s ease-in forwards;
+  transform: rotateX(-50deg) rotateY(-90deg);
+  transition: transform 400ms;
+}
+.gift-box.open .gift {
+  pointer-events: auto;
+  visibility: visible;
+  transition: transform 600ms 800ms;
+  transform: translate(10px) rotateX(90deg) rotateZ(-90deg);
+}
+.gift-box.open .gift .img-wrap {
+  opacity: 1;
+  transition: opacity 800ms 200ms;
+}
+.gift-box.open > .gift-box__side {
+  opacity: 0.3;
+  transition: opacity 500ms 600ms;
+}
+.gift-box.open > .gift-box__side .gift-box__side--back {
+  opacity: 0.7;
+  transform: translateZ(-101px) rotateY(180deg);
+}
+.gift-box.open > .gift-box__side .gift-box__side--front {
+  transition: transform 800ms 0s, opacity 500ms 600ms;
+  transform: translateZ(100px) rotateY(190deg) translateX(0px);
+  transform-origin: 0% 0%;
+  opacity: 0.3;
+}
+.gift-box.open .gift-box-lid__side,
+.gift-box.open .gift-box-lid__end,
+.gift-box.open .ribbon-l,
+.gift-box.open .ribbon-r,
+.gift-box.open .ribbon-l-end,
+.gift-box.open .ribbon-r-end  {
+  visibility: hidden;
+  
+}
+
+@-webkit-keyframes zoomIn {
+  50% {
+    transform: rotateX(-143deg) rotateY(-180deg) translateZ(-15px);
+  }
+  100% {
+    transform: rotateX(-167deg) rotateY(-180deg) translateZ(-15px) scale(1.2);
+  }
+}
+@keyframes zoomIn {
+  0% {
+    transform: rotateX(-0deg) rotateY(-90deg) translateZ(0px);
+  }
+  100% {
+    transform: rotateX(-100deg) rotateY(-90deg) translateZ(0px) scale(1.2);
+  }
+}
+/*---------------------------------------------------------*/
+.gift-box .gift-box__side,
+.gift-box .gift-box__end {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 2px solid var(--gift-box-edge-color);
+}
+
+.gift-box .gift-box-lid__side {
+  position: absolute;
+  width: 220px;
+  height: 50px;
+  border: 2px solid var(--gift-box-edge-color);
+}
+
+.gift-box .gift-box-lid__end {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border: 2px solid var(--gift-box-edge-color);
+}
+
+.gift-box .gift-box__side,
+.gift-box .gift-box-lid__side {
+  background: linear-gradient(to right,
+    var(--gift-box-color) 40%,
+    var(--wrap-color) 40%,
+    var(--wrap-color) 60%,
+    var(--gift-box-color) 60%
+  );
+}
+.gift-box .gift-box__end,
+.gift-box .gift-box-lid__end {
+  background: linear-gradient(to right,
+    transparent 40%,
+    var(--wrap-top-color) 40%,
+    var(--wrap-top-color) 60%,
+    transparent 60%
+  ),
+  linear-gradient(to bottom,
+    var(--gift-box-color) 40%,
+    var(--wrap-color) 40%,
+    var(--wrap-color) 60%,
+    var(--gift-box-color) 60%
+  );
+}
+
+.gift-box .gift-box__side--front { transform: rotateY(0deg) translateZ(100px); }
+.gift-box .gift-box__side--back { transform: rotateY(180deg) translateZ(100px); }
+.gift-box .gift-box__side--left { transform: rotateY(-90deg) translateZ(100px); }
+.gift-box .gift-box__side--right { transform: rotateY(90deg) translateZ(100px); }
+.gift-box .gift-box__side--top { transform: rotateX(90deg) translateZ(100px); }
+.gift-box .gift-box__side--bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+.gift-box .gift-box-lid__side--front { transform: rotateY(0deg) translateZ(110px) translateX(-10px) translateY(-10px); }
+.gift-box .gift-box-lid__side--back { transform: rotateY(180deg) translateZ(110px) translateX(10px) translateY(-10px); }
+.gift-box .gift-box-lid__side--left { transform: rotateY(-90deg) translateZ(120px)  translateY(-10px); }
+.gift-box .gift-box-lid__side--right { transform: rotateY(90deg) translateZ(100px)  translateY(-10px); }
+.gift-box .gift-box-lid__side--top { transform: rotateX(90deg) translateZ(120px) translateX(-10px) translateY(0); }
+
+.gift-box .ribbon-l {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border: 2px solid var(--wrap-ribbon-color);
+  border-radius: 50% 50% 0 50%;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  transform: rotateX(75deg)
+             rotateY(90deg)
+             /* use a CSS variable for the translate, defined in CSS */
+             translateZ(calc(80px - var(--gift-box-position)))  
+             translateX(-85px)
+             translateY(-75px)
+             skewY(30deg);
+}
+
+.gift-box .ribbon-r {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border: 2px solid var(--wrap-ribbon-color);
+  border-radius: 50% 50% 0 50%;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  transform: rotateX(-5deg)
+             rotateY(90deg)
+             /* use a CSS variable for the translate, defined in CSS */
+             translateZ(calc(80px - var(--gift-box-position)))  
+             translateX(-30px)
+             translateY(-110px)
+             skewY(30deg);
+}
+
+.ribbon-l-end {
+  position: absolute;
+  width: 40px;
+  height: 110px;
+  background:
+    linear-gradient(45deg, var(--wrap-top-color) 72%, transparent 72%), 
+    linear-gradient(-45deg, var(--wrap-top-color) 72%, transparent 72%);
+  border: 2px solid var(--gift-box-edge-color);
+  border-top: none;
+  border-bottom: none;
+  transform: rotateX(-70deg) translateX(80px) translateY(-80px) translateZ(-60px);
+}
+
+.ribbon-r-end {
+  position: absolute;
+  width: 40px;
+  height: 110px;
+  background:
+    linear-gradient(45deg, var(--wrap-top-color) 72%, transparent 72%), 
+    linear-gradient(-45deg, var(--wrap-top-color) 72%, transparent 72%);
+  border: 2px solid var(--gift-box-edge-color);
+  border-top: none;
+  border-bottom: none;
+  transform: rotateX(80deg) translateX(80px) translateY(-80px) translateZ(60px);
+}
+
+@keyframes rotation-3d {
+  from {
+    transform: translateZ(-100px) rotateY(50deg) rotateX(-5deg) rotateZ(-30deg)
+  }
+  to {
+    transform: translateZ(-100px) rotateY(409deg) rotateX(-5deg) rotateZ(-30deg)
+  }
+}
+/*---------------------End Box--------------------------------*/
+#card{
+  margin:15%;
+  position:absolute;
+  height:auto;
+  width:300px;
+  border-radius:10px;
+  background-color:white;
+  background-image:url("https://image.freepik.com/free-vector/open-gift-box-with-heart-shape-confetti-burst-explosion-3d-valentines-day-romantic-gift_165143-438.jpg");
+  background-size:50vh,70vh;
+  box-shadow:0px 0px 20px red;
+  transform:rotate(5deg);
+  top:0px;
+}
+
+img{
+  margin:auto;
+  padding:5%; 
+  display:block; 
+  border-radius:50%;
+  box-shadow: 0 4px 8px 0 red; 
+  width:50%;
+  height:40px;
+}
+
+h4{
+
+    text-align:center;
+
+      -webkit-text-fill-color: rgba(0,200,200,0.1);
+
+     -webkit-background-clip: text ;
+
+      background-image:url("https://i.pinimg.com/originals/20/21/7f/20217f7fa2c9701b8128d8fb153a4db9.gif");
+
+     font-family: 'Allura', cursive;
+
+     padding:-2%;
+
+     font-size:19px;
+
+     overflow:hidden;
+
+}
+
+/*---------------------------------Card--------------------------------*/
+#birthdayCard {
+  position: absolute;
+  width: 250px;
+  height: auto;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transform: perspective(2500px);
+  transition: 4s;
+  top: 5%;
+}
+
+.birthdayCard-hidden{
+  left: -250px;
+}
+
+.birthdayCard-show {
+  opacity: 1;
+  left: 35%;
+}
+
+#birthdayCard:hover {
+  left: 50%;
+  transform: perspective(2500px) rotate(5deg);
+  box-shadow: inset 100px 20px 100px rgba(0,0,0,.15), 0 10px 100px rgba(0,0,0,0.3);
+}
+
+#birthdayCard:hover .cardFront {
+  transform: rotateY(-160deg); 
+}
+
+#birthdayCard:hover .front-text {
+  display: none;
+}
+
+#birthdayCard:hover .wrap-deco {
+  display: none;
+}
+
+#birthdayCard:hover .wrap-decoTwo {
+  display: none;
+}
+
+#birthdayCard:hover .plate {
+  display: none;
+}
+
+.cardFront {
+  position: relative;
+  background-color: #fff;
+  width: 250px;
+  height:350px;
+  overflow: hidden;
+  transform-origin: left;
+  box-shadow: inset 100px 20px 100px rgba(0,0,0,.13), 30px 0 50px rgba(0,0,0,0.1);
+  transition: .4s;
+}
+
+.happy, .toyou {
+  position: relative;
+  font-family: didot;
+  text-align: center;
+  backface-visibility: hidden;
+  font-size: 30px; 
+}
+
+.happy {
+  top:198px;
+}
+
+.toyou {
+  top:123px;
+}
+
+.bday {
+  position: relative;
+  font-family: arial;
+  font-size: 35px;
+  text-align: center;
+  top:163px;
+}
+
+.wrap-deco {
+  position: absolute;
+  top:-230px;
+  left:-200px;
+}
+
+.decorations {
+  position: absolute;
+  width: 400px;
+  height: 300px;
+  border: 3px solid #333;
+  border-radius: 50%;
+}
+
+.decorations:before, .decorations:after, .decorationsTwo:before, .decorationsTwo:after, .decorationsThree:before, .decorationsThree:after {
+  content:"";
+  position: absolute;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  width:0;
+  height:0;
+}
+
+.decorations:before {
+  border-top: 40px solid #f15bb5;
+  top:297px;
+  left:210px;
+  transform: rotate(-5deg);
+}
+
+.decorations:after{
+  border-top: 40px solid #f4d35e;
+  top:288px;
+  left:260px;
+  transform: rotate(-17deg);
+}
+
+.decorationsTwo:before {
+  border-top: 40px solid #00f5d4;
+  top:268px;
+  left:315px;
+  transform: rotate(-30deg);
+}
+
+.decorationsTwo:after, .decorationsThree:after {
+  border-top: 40px solid #9b5de5;
+  top:238px;
+  left:355px;
+  transform: rotate(-40deg);
+}
+
+.wrap-decoTwo {
+  transform: scaleX(-1);
+  position: absolute;
+  top:-230px;
+  left:445px; 
+}
+
+.decorationsThree:before {
+  border-top: 40px solid #00bbf9;
+  top:268px;
+  left:315px;
+  transform: rotate(-30deg);
+}
+
+.plate {
+  position: absolute;
+  width: 130px;
+  height: 5px;
+  background-color: #00bbf9;
+  left:60px;
+  top:213px;
+}
+
+.cake {
+  position: absolute;
+  overflow: hidden;
+  width:100px;
+  height: 50px;
+  background-color: #f15bb5;
+  border-radius: 10px 10px 0 0;
+  top:-50px;
+  left:15px;
+  box-shadow: inset 0 -15px #f9c74f, inset 0 15px #432818;
+}
+
+.cake:before {
+  content:"";
+  position: absolute;
+  background-color: #432818;
+  width:10px;
+  height:20px;
+  top:5px;
+  border-radius:20px;
+  box-shadow: 10px 5px #f15bb5, 20px 0px #432818, 30px 2px #f15bb5, 40px 5px #432818, 50px 5px #f15bb5, 60px 0px #432818, 70px 5px #f15bb5, 80px 5px #432818, 90px 5px #f15bb5;
+}
+
+.plate:before {
+  content:"";
+  position: absolute;
+  background: repeating-linear-gradient(-45deg, #9b5de5, #9b5de5 3px, #00f5d4 3px, #00f5d4 6px);
+  width:7px;
+  height: 25px;
+  top:-75px;
+  left:61px;
+}
+
+.plate:after {
+  content:"";
+  position: absolute;
+  width:1px;
+  height: 5px;
+  background-color: #333;
+  top:-80px;
+  left:64px;
+}
+
+
+.flame {
+  position: absolute;
+  background-color: #fb5607;
+  border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
+  transform: rotate(-45deg);
+  width:15px;
+  height:15px;
+  opacity:0.7;
+  top:-93px;
+  left:57px;
+}
+
+.cardInside {
+  position: absolute;
+  background-color: #fff;
+  width: 250px;
+  height:350px;
+  z-index:-1;
+  left:0;
+  top:0;
+  box-shadow: inset 100px 20px 100px rgba(0,0,0,0.2);
+}
+
+.inside-text {
+  position: relative;
+  top:-160px;
+  transform: scale(0.7);
+}
+
+.wishes {
+  position: relative;
+  top:-100px;
+  margin: 25px;
+}
+
+p {
+  font-family: 'Brush Script MT', cursive;
+  color: #333;
+}
+
+.name {
+  margin-left:150px;
+}
+
+/*---------------------------CaKe----------------------------------*/
+
+
+.cake2 {
+  position: absolute;
+  width: 250px;
+  height: 200px;
+  bottom: 5%;
+  left: -50%;
+  margin-top: -70px;
+  margin-left: -125px;
+  transition: 4s;
+}
+
+.cake-show{
+  left: 50%;
+}
+
+.plate2 {
+  width: 270px;
+  height: 110px;
+  position: absolute;
+  bottom: -10px;
+  left: -10px;
+  background-color: #ccc;
+  border-radius: 50%;
+  box-shadow: 0 2px 0 #b3b3b3, 0 4px 0 #b3b3b3, 0 5px 40px rgba(0, 0, 0, 0.5);
+}
+
+.cake2 > * {
+  position: absolute;
+}
+
+.layer {
+  position: absolute;
+  display: block;
+  width: 250px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: pink;
+  box-shadow: 0 2px 0px #6a4b18, 0 4px 0px #33240b, 0 6px 0px #32230b, 0 8px 0px #31230b, 0 10px 0px #30220b, 0 12px 0px #2f220b, 0 14px 0px #2f210a, 0 16px 0px #2e200a, 0 18px 0px #2d200a, 0 20px 0px #2c1f0a, 0 22px 0px #2b1f0a, 0 24px 0px #2a1e09, 0 26px 0px #2a1d09, 0 28px 0px #291d09, 0 30px 0px #281c09;
+}
+
+.layer-top {
+  top: 0px;
+}
+
+.layer-middle {
+  top: 33px;
+}
+
+.layer-bottom {
+  top: 66px;
+}
+
+.icing {
+  top: 2px;
+  left: 5px;
+  background-color: #f0e4d0;
+  width: 240px;
+  height: 90px;
+  border-radius: 50%;
+}
+.icing:before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: 5px;
+  bottom: 6px;
+  left: 5px;
+  background-color: #f4ebdc;
+  box-shadow: 0 0 4px #f6efe3, 0 0 4px #f6efe3, 0 0 4px #f6efe3;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.drip {
+  display: block;
+  width: 50px;
+  height: 60px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  background-color: #f0e4d0;
+}
+
+.drip1 {
+  top: 53px;
+  left: 5px;
+  transform: skewY(15deg);
+  height: 48px;
+  width: 40px;
+}
+
+.drip2 {
+  top: 69px;
+  left: 181px;
+  transform: skewY(-15deg);
+}
+
+.drip3 {
+  top: 54px;
+  left: 90px;
+  width: 80px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+
+.candle {
+  background-color: #7B020B;
+  width: 16px;
+  height: 50px;
+  border-radius: 8px/4px;
+  top: -20px;
+  left: 50%;
+  margin-left: -8px;
+  z-index: 10;
+}
+.candle:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ad030f;
+}
+
+.flame2 {
+  position: absolute;
+  background-color: orange;
+  width: 15px;
+  height: 35px;
+  border-radius: 10px 10px 10px 10px/25px 25px 10px 10px;
+  top: -34px;
+  left: 50%;
+  margin-left: -7.5px;
+  z-index: 10;
+  box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5);
+  transform-origin: 50% 90%;
+  animation: flicker 1s ease-in-out alternate infinite;
+}
+
+@keyframes flicker {
+  0% {
+    transform: skewX(5deg);
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.2), 0 0 20px rgba(255, 165, 0, 0.2), 0 0 60px rgba(255, 165, 0, 0.2), 0 0 80px rgba(255, 165, 0, 0.2);
+  }
+  25% {
+    transform: skewX(-5deg);
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5);
+  }
+  50% {
+    transform: skewX(10deg);
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.3), 0 0 20px rgba(255, 165, 0, 0.3), 0 0 60px rgba(255, 165, 0, 0.3), 0 0 80px rgba(255, 165, 0, 0.3);
+  }
+  75% {
+    transform: skewX(-10deg);
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.4), 0 0 20px rgba(255, 165, 0, 0.4), 0 0 60px rgba(255, 165, 0, 0.4), 0 0 80px rgba(255, 165, 0, 0.4);
+  }
+  100% {
+    transform: skewX(5deg);
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5);
+  }
+}
