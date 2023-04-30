@@ -205,7 +205,7 @@ function init() {
     
   gift.addEventListener("click", function(e){
     gift.classList.toggle("open");
-    document.getElementById("birthdayCard").classList.add("birthdayCard-show");
+    // document.getElementById("birthdayCard").classList.add("birthdayCard-show");
     document.getElementsByClassName("cake2")[0].classList.add("cake-show");
   }, false);
   
